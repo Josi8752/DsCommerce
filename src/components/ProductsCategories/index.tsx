@@ -1,15 +1,16 @@
 import './styles.css'
 
-export default function CategoriesContainer() {
+type Props = {
+    name: string;
+}
+
+export default function ProductsCategories({ name }: Props) {
 
     return (
 
         <div className="dsc-category-container">
             <div className="dsc-category">
-                Eletrônicos
-            </div>
-            <div className="dsc-category">
-                Computadores
+                {name}
             </div>
         </div>
     );
