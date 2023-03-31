@@ -7,11 +7,8 @@ type Props = {
 export default function ProductsCategories({ name }: Props) {
 
     return (
-
-        <div className="dsc-category-container">
-            <div className="dsc-category">
-                {name}
-            </div>
+        <div className="dsc-category">
+            {name}
         </div>
     );
 }
