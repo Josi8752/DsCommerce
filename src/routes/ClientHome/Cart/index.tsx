@@ -1,5 +1,4 @@
 import './styles.css';
-import computer from '../../../assets/computer.png';
 
 
 
