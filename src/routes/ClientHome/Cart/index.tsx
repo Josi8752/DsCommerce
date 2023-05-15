@@ -3,16 +3,16 @@ import * as cartService from '../../../services/cart-service';
 import './styles.css';
 import { OrderDTO, OrderItemDTO } from '../../../models/order';
 
-const item1 : OrderItemDTO = new OrderItemDTO (
+const item1: OrderItemDTO = new OrderItemDTO(
     4, 1, "PC Gamer", 1200, "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/4-big.jpg"
 )
-const item2 : OrderItemDTO = new OrderItemDTO (
+const item2: OrderItemDTO = new OrderItemDTO(
     5, 2, "Rails for Dummies", 100.99, "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/5-big.jpg"
 )
 
-const cart : OrderDTO = new OrderDTO();
+const cart: OrderDTO = new OrderDTO();
 export default function Cart() {
-const [cart, setCart] = useState<OrderDTO>(cartService.getCart);
+    const [cart, setCart] = useState<OrderDTO>(cartService.getCart);
 
     return (
         <main>
