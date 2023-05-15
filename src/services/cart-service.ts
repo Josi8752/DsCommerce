@@ -21,3 +21,8 @@ export function addProduct(product: ProductDTO) {
     }
 
 }
+
+
+export function clearCart(){
+    cartRepository.clear();
+}

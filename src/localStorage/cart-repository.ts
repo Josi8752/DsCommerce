@@ -17,6 +17,10 @@ export function get(): OrderDTO {
     obj.items.forEach(x => {
         cart.items.push(new OrderItemDTO(x.productId, x.quantity, x.name, x.price, x.imgUrl))
     })
-    
+
     return cart;
+}
+
+export function clear(){
+    localStorage.setItem(CART_KEY, '{"items":[]}')
 }
