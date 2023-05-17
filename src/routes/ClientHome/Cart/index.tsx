@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const cart: OrderDTO = new OrderDTO();
+
 export default function Cart() {
     const [cart, setCart] = useState<OrderDTO>(cartService.getCart);
 
