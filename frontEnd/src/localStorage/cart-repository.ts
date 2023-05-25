@@ -21,6 +21,6 @@ export function get(): OrderDTO {
     return cart;
 }
 
-export function clear(){
+export function clear() {
     localStorage.setItem(CART_KEY, '{"items":[]}')
 }

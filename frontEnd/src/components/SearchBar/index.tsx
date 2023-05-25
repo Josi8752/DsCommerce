@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import './style.css';
+import { useState } from 'react';
+
 
 
 type Props = {
@@ -34,7 +35,7 @@ export default function SearchBar({ onSearch }: Props) {
                 placeholder="Nome do produto"
                 onChange={handleChange} />
 
-            <button  onClick={handleResetClick}>🗙</button>
+            <button onClick={handleResetClick}>🗙</button>
         </form>
     )
 }
