@@ -1,13 +1,28 @@
+import { useState } from 'react';
+import { CredentialsDTO } from '../../../models/auth';
 import './styles.css';
+import { LoginRequest } from '../../../services/auth-service';
 
 
 export default function Login() {
+
+    const [formData, setFormData] = useState<CredentialsDTO>({
+        userName: '',
+        password: ''
+    });
+
+    function handleFormSubmit(event: any) {
+
+        event.preventDefault();
+        LoginRequest(formData);
+
+    }
 
     return (
         <main>
             <section id="login-section" className="dsc-container">
                 <div className="dsc-login-form-container">
-                    <form className="dsc-card dsc-form">
+                    <form className="dsc-card dsc-form" onSubmit={handleFormSubmit}>
                         <h2>Login</h2>
                         <div className="dsc-form-controls-container">
                             <div>
