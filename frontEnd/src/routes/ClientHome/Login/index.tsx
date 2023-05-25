@@ -18,6 +18,14 @@ export default function Login() {
 
     }
 
+    function handleInputChange(event: any) {
+
+        const value = event.target.value;
+        const name = event.target.name;
+        setFormData({ ...formData, [name]: value });
+
+    }
+
     return (
         <main>
             <section id="login-section" className="dsc-container">
@@ -27,14 +35,22 @@ export default function Login() {
                         <div className="dsc-form-controls-container">
                             <div>
                                 <input className="dsc-form-control"
+                                    name='userName'
+                                    value={formData.userName}
                                     type="text"
-                                    placeholder="Email" />
+                                    placeholder="Email"
+                                    onChange={handleInputChange}
+                                />
                                 <div className="dsc-form-error"></div>
                             </div>
                             <div>
                                 <input className="dsc-form-control"
+                                    name='password'
+                                    value={formData.password}
                                     type="password"
-                                    placeholder="Senha" />
+                                    placeholder="Senha"
+                                    onChange={handleInputChange}
+                                />
                             </div>
                         </div>
 
