@@ -1,4 +1,4 @@
 export type CredentialsDTO = {
-userName: string;
+username: string;
 password: string;
 }

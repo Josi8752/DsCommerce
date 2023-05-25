@@ -1,9 +1,10 @@
 import QueryString from "qs";
 import { CredentialsDTO } from "../models/auth";
 import { CLIENT_ID, CLIENT_SECRET } from "../utils/system";
+import { AxiosRequestConfig } from "axios";
+import { requestBackend } from "../utils/request";
 
-export function LoginRequest(loginData: CredentialsDTO) {
-
+export function loginRequest(loginData: CredentialsDTO) {
 
     const headers = {
 
@@ -11,7 +12,16 @@ export function LoginRequest(loginData: CredentialsDTO) {
         Authorization: "Basic " + window.btoa(CLIENT_ID + ":" + CLIENT_SECRET)
     }
 
-    const requestBody = QueryString.stringify({...loginData, grant_type: "password"});
+    const requestBody = QueryString.stringify({ ...loginData, grant_type: "password" });
 
- console.log(requestBody);
+    const config: AxiosRequestConfig = {
+
+        method: "POST",
+        url: "/oauth/token",
+        data: requestBody,
+        headers
+
+    }
+
+    return requestBackend(config);
 }
