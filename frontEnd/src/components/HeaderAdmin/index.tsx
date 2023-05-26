@@ -1,7 +1,7 @@
 import './styles.css';
 import homeIcon from '../../assets/home.svg';
 import productsIcon from '../../assets/products.svg';
-import * as authService from '../../services/auth-service';
+
 
 export default function HeaderAdmin() {
 
