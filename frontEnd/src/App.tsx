@@ -29,15 +29,11 @@ export default function App() {
             <Route path='cart' element={<Cart />} />
             <Route path='login' element={<Login />} />
           </Route>
-          <Route path="/admin/" element={<Admin />}>
+          <Route path="/admin/" element={<PrivateRoute><Admin /></PrivateRoute>}>
             <Route index element={<AdminHome />} />
           </Route>
-          <Route path="/admin/" element={<PrivateRoute><Admin /></PrivateRoute>} />
-          
           <Route path="*" element={<Navigate to="/" />} />
-
         </Routes>
-
       </HistoryRouter>
     </ContextCartCount.Provider>
   )
