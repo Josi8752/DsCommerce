@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { BASE_URL } from "./system";
 import * as authService from '../services/auth-service';
-import { Navigate } from "react-router-dom";
+import { history } from "./history";
 
 export function requestBackend(config: AxiosRequestConfig) {
 
@@ -37,13 +37,18 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
     function (response) {
-
         // DO SOMETHING WITH RESPONSE DATA IF STATUS IS 2xx
 
         return response;
     },
 
     function (error) {
+        if (error.response.status === 401) {
+            history.push("/login");
+        }
+        if (error.response.status === 403) {
+            history.push("/catalog");
+        }
         // DO SOMETHING WITH RESPONSE ERROR
 
         return Promise.reject(error);
