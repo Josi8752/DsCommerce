@@ -7,6 +7,7 @@ import { ContextToken } from '../../../utils/context-token';
 
 export default function Login() {
     const navigate = useNavigate();
+    
     const { setContextTokenPayload } = useContext(ContextToken);
 
     const [formData, setFormData] = useState<CredentialsDTO>({
