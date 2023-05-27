@@ -11,12 +11,11 @@ export default function LoggedUser() {
     const { contextTokenPayload, setContextTokenPayload } = useContext(ContextToken);
 
     function handleLogoutClick() {
+
         authService.logout();
         setContextTokenPayload(undefined);
-
         navigate('/catalog');
     }
-
     return (
 
         contextTokenPayload && authService.isAuthenticated()
