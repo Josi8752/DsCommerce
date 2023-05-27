@@ -71,20 +71,18 @@ export default function Cart() {
                                         </div>
                                     ))
                                 }
-
-
                                 <div className="dsc-cart-total-container">
                                     <h3>R$ {cart.total.toFixed(2)}</h3>
                                 </div>
                             </div>
                         )
                 }
-
-
                 <div className="dsc-btn-page-container">
+
                     <div className="dsc-btn dsc-btn-blue">
                         Finalizar pedido
                     </div>
+
                     <Link to="/catalog">
                         <div className="dsc-btn dsc-btn-white">
                             Continuar comprando
