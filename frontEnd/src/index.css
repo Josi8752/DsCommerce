@@ -63,6 +63,8 @@ main {
   margin-top: 20px;
 }
 
+
+
 .dsc-txt-left {
   text-align: left;
 }
@@ -382,9 +384,13 @@ nav a {
 /*-----------------------------------------------------------------*/
 /*dialog modal*/
 
-.btn-dialog{
+.btn-dialog {
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 }
+
 .dsc-dialog-background {
   position: fixed;
   top: 0;
