@@ -82,10 +82,9 @@ export default function ProductListing() {
 
                 {
                     !isLastPage &&
+                    
+                    <BtnNextPage onNextPage={handleNextPageClick} />
 
-                    <div onClick={handleNextPageClick}>
-                        <BtnNextPage />
-                    </div>
                 }
             </section>
         </main>
