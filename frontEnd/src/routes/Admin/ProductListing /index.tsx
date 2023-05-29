@@ -6,12 +6,14 @@ import { useEffect, useState } from 'react';
 import { ProductDTO } from '../../../models/product';
 import SearchBar from '../../../components/SearchBar';
 import BtnNextPage from '../../../components/BtnNextPage';
+import DialogInfo from '../../../components/DialogInfo';
 
 
 type QueryParams = {
     page: number,
     name: string
 }
+
 export default function ProductListing() {
 
     const [isLastPage, setIsLastPage] = useState(false);
@@ -20,6 +22,12 @@ export default function ProductListing() {
         page: 0,
         name: ""
     })
+
+    const [dialogInfoData, setDialogInfoData] = useState({
+        visible: false,
+        message: "Operaçao com sucesso!"
+    });
+
 
     useEffect(() => {
         productService.findPageRequest(queryParams.page, queryParams.name)
@@ -37,6 +45,14 @@ export default function ProductListing() {
 
     function handleNextPageClick() {
         setQueryParams({ ...queryParams, page: queryParams.page + 1 });
+    }
+
+    function handleDialogInfoCloseClick() {
+        setDialogInfoData({ ...dialogInfoData, visible: false });
+    }
+
+    function handleDeleteClick() {
+        setDialogInfoData({ ...dialogInfoData, visible: true });
     }
 
     return (
@@ -72,7 +88,7 @@ export default function ProductListing() {
                                     <td className="dsc-tb768">R$ {product.price.toFixed(2)}</td>
                                     <td className="dsc-txt-left">{product.name}</td>
                                     <td><img className="dsc-product-listing-btn" src={imgIconEdit} alt="Editar" /></td>
-                                    <td><img className="dsc-product-listing-btn" src={imgIconDelete} alt="Deletar" /></td>
+                                    <td><img onClick={handleDeleteClick} className="dsc-product-listing-btn" src={imgIconDelete} alt="Deletar" /></td>
                                 </tr>
                             ))
                         }
@@ -82,11 +98,17 @@ export default function ProductListing() {
 
                 {
                     !isLastPage &&
-                    
+
                     <BtnNextPage onNextPage={handleNextPageClick} />
 
                 }
             </section>
+            {
+                dialogInfoData?.visible &&
+                <DialogInfo message={dialogInfoData.message}
+                    onDialogClose={handleDialogInfoCloseClick} />
+            }
+
         </main>
     );
 }

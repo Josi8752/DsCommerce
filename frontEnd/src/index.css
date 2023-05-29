@@ -6,7 +6,7 @@
   --dsc-color-bg-tertiary: #636363;
   --dsc-color-bg-quaternary: #0caf1d;
   --dsc-color-bg-notification: #f00;
-
+  --dsc-color-bg-dialog: rgba(0, 0, 0, 0.5);
 
   --dsc-color-card-bg: #fff;
   --dsc-color-card-border: #d9d9d9;
@@ -148,6 +148,7 @@ nav a {
   font-weight: 700;
   cursor: pointer;
 }
+
 .dsc-logged-user p {
   font-size: 12px;
 }
@@ -376,4 +377,39 @@ nav a {
       font-size: 12px;
     }
   }
+}
+
+/*-----------------------------------------------------------------*/
+/*dialog modal*/
+
+.btn-dialog{
+  width: 100%;
+}
+.dsc-dialog-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--dsc-color-bg-dialog);
+}
+
+.dsc-dialog-box {
+  background-color: var(--dsc-color-card-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.dsc-dialog-box h2 {
+  font-size: 20px;
+  color: var(--dsc-color-font-primary);
+  margin-bottom: 20px;
 }
