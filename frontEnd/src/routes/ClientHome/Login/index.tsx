@@ -6,13 +6,31 @@ import { useNavigate } from 'react-router-dom';
 import { ContextToken } from '../../../utils/context-token';
 
 export default function Login() {
+
     const navigate = useNavigate();
-    
+
     const { setContextTokenPayload } = useContext(ContextToken);
 
-    const [formData, setFormData] = useState<CredentialsDTO>({
-        username: "",
-        password: ""
+    const [formData, setFormData] = useState<any>({
+        username: {
+
+            value: "",
+            id: "username",
+            name: "username",
+            type: "text",
+            placeholder: "Email",
+            validation: function (value: string) {
+                return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value.toLowerCase());
+            },
+            message: "Favor informar um email válido",
+        },
+        password: {
+            value: "",
+            id: "password",
+            name: "password",
+            type: "password",
+            placeholder: "Senha",
+        }
     });
 
 
@@ -21,7 +39,7 @@ export default function Login() {
 
         event.preventDefault();
 
-        authService.loginRequest(formData)
+        authService.loginRequest({ username: formData.username.value, password: formData.password.value })
             .then(response => {
                 authService.saveAccessToken(response.data.access_token);
 
@@ -39,7 +57,7 @@ export default function Login() {
 
         const value = event.target.value;
         const name = event.target.name;
-        setFormData({ ...formData, [name]: value });
+        setFormData({ ...formData, [name]: { ...formData[name], value: value } });
 
     }
 
@@ -53,7 +71,7 @@ export default function Login() {
                             <div>
                                 <input className="dsc-form-control"
                                     name='username'
-                                    value={formData.username}
+                                    value={formData.username.value}
                                     type="text"
                                     placeholder="Email"
                                     onChange={handleInputChange}
@@ -63,7 +81,7 @@ export default function Login() {
                             <div>
                                 <input className="dsc-form-control"
                                     name='password'
-                                    value={formData.password}
+                                    value={formData.password.value}
                                     type="password"
                                     placeholder="Senha"
                                     onChange={handleInputChange}
