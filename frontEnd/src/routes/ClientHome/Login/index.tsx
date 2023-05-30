@@ -4,6 +4,7 @@ import { CredentialsDTO } from '../../../models/auth';
 import * as authService from '../../../services/auth-service';
 import { useNavigate } from 'react-router-dom';
 import { ContextToken } from '../../../utils/context-token';
+import FormInput from '../../../components/FormInput';
 
 export default function Login() {
 
@@ -69,21 +70,15 @@ export default function Login() {
                         <h2>Login</h2>
                         <div className="dsc-form-controls-container">
                             <div>
-                                <input className="dsc-form-control"
-                                    name='username'
-                                    value={formData.username.value}
-                                    type="text"
-                                    placeholder="Email"
+                                <FormInput className="dsc-form-control"
+                                    {...formData.username}
                                     onChange={handleInputChange}
                                 />
                                 <div className="dsc-form-error"></div>
                             </div>
                             <div>
-                                <input className="dsc-form-control"
-                                    name='password'
-                                    value={formData.password.value}
-                                    type="password"
-                                    placeholder="Senha"
+                                <FormInput className="dsc-form-control"
+                                    {...formData.password}
                                     onChange={handleInputChange}
                                 />
                             </div>
