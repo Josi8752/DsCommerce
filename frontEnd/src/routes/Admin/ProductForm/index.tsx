@@ -40,10 +40,6 @@ export default function ProductForm() {
     });
 
     useEffect(() => {
-
-        const obj = forms.validate(formData, "price");
-        console.log(obj);
-
         if (isEditing) {
             productService.findById(Number(params.productId))
                 .then(response => {
@@ -60,9 +56,10 @@ export default function ProductForm() {
 
     function handleInputChange(event: any) {
 
-        const value = event.target.value;
-        const name = event.target.name;
-        setFormData(forms.update(formData, name, value));
+        const dataUpdated = forms.update(formData, event.target.name, event.target.value)
+        const dataValidated = forms.validate(dataUpdated, event.target.name);
+
+        setFormData(dataValidated);
 
     }
 
@@ -79,13 +76,17 @@ export default function ProductForm() {
                                     {...formData.name}
                                     onChange={handleInputChange}
                                 />
+                                <div className='dsc-form-error'>{formData.name.message}</div>
                             </div>
+
                             <div>
                                 <FormInput className="dsc-form-control"
                                     {...formData.price}
                                     onChange={handleInputChange}
                                 />
+                                <div className='dsc-form-error'>{formData.price.message}</div>
                             </div>
+
                             <div>
                                 <FormInput className="dsc-form-control"
                                     {...formData.imgUrl}
