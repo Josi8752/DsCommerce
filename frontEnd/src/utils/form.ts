@@ -12,12 +12,12 @@ export function toValues(inputs: any) {
     return data;
 }
 
-export function updateAll(inputs: any, newValues: any) {
+export function updateAll(inputs: any, newValue: any) {
 
     const newInputs: any = {};
 
     for (const name in inputs) {
-        newInputs[name] = { ...inputs[name], value: newValues[name] }
+        newInputs[name] = { ...inputs[name], value: newValue[name] }
     }
 
     return newInputs;
@@ -39,4 +39,17 @@ export function validate(inputs: any, name: string) {
 export function toDirty(inputs: any, name: string) {
 
     return { ...inputs, [name]: { ...inputs[name], dirty: "true" } }
+}
+
+
+export function updateAndValidate(inputs: any, name: string, newValue: any) {
+    const dataUpdated = update(inputs, name, newValue);
+    const dataVatidated = validate(dataUpdated, name);
+    return dataVatidated;
+}
+
+export function dirtyAndValidate(inputs: any, name: string) {
+    const dataDirty = toDirty(inputs, name);
+    const dataVatidated = validate(dataDirty, name);
+    return dataVatidated;
 }
