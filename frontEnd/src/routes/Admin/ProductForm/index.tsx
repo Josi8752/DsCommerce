@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import FormInput from '../../../components/FormInput';
 import * as forms from '../../../utils/form';
+import * as productService from '../../../services/product-service';
+
 export default function ProductForm() {
 
+    const params = useParams();
+    const isEditing = params.productId !== 'create';
     const navigate = useNavigate();
     const [formData, setFormData] = useState<any>({
 
@@ -30,6 +34,18 @@ export default function ProductForm() {
             placeholder: "Imagem",
         }
     });
+
+    useEffect(() => {
+        if (isEditing) {
+            productService.findById(Number(params.productId))
+                .then(response => {
+                    const newFormData = forms.updateAll(formData, response.data);
+                    setFormData(newFormData);
+                })
+        }
+    }, [])
+
+
     function handleCancelProduct() {
         navigate("/admin/products")
     }
