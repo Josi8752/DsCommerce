@@ -3,6 +3,7 @@ import cartIcon from '../../assets/cart.svg';
 
 import { useContext } from 'react';
 import { ContextCartCount } from '../../utils/context-cart';
+import { Link } from 'react-router-dom';
 
 export default function CartIcon() {
 
@@ -10,7 +11,9 @@ export default function CartIcon() {
 
     return (
         <>
-            <img src={cartIcon} alt="Carrinho de compras" />
+
+            <Link to="/login">
+                <img src={cartIcon} alt="Carrinho de compras" /></Link>
             {
                 contextCartCount > 0 &&
 
