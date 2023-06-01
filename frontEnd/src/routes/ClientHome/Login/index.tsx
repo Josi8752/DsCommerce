@@ -31,6 +31,10 @@ export default function Login() {
             name: "password",
             type: "password",
             placeholder: "Senha",
+            validation: function (value: string) {
+                return /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/.test(value);
+            },
+            message: "Senha inválida"
         }
     });
 
@@ -78,7 +82,7 @@ export default function Login() {
                                     onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />
-                                <div className="dsc-form-error"></div>
+                                <div className="dsc-form-error">{formData.username.message}</div>
                             </div>
                             <div>
                                 <FormInput className="dsc-form-control"
@@ -86,6 +90,7 @@ export default function Login() {
                                     onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />
+                                <div className="dsc-form-error">{formData.password.message}</div>
                             </div>
                         </div>
 
