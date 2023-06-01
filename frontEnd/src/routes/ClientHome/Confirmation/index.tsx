@@ -18,7 +18,6 @@ export default function Confirmation() {
 
     }, []);
 
-
     return (
         <main>
             <section id="confirmation-section" className="dsc-container">
@@ -43,7 +42,6 @@ export default function Confirmation() {
                             </div>
                         ))
                     }
-
                     <div className="dsc-cart-total-container">
                         <h3>R$ {order?.total.toFixed(2)}</h3>
                     </div>
@@ -57,8 +55,6 @@ export default function Confirmation() {
                             Início
                         </div>
                     </Link>
-
-
                 </div>
             </section>
         </main>

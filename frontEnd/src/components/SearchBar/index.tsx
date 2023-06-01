@@ -1,8 +1,6 @@
 import './style.css';
 import { useState } from 'react';
 
-
-
 type Props = {
     onSearch: Function;
 }

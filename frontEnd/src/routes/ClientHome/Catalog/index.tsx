@@ -1,9 +1,9 @@
+import './styles.css';
 import { useEffect, useState } from 'react';
 import BtnNextPage from '../../../components/BtnNextPage';
 import CatalogCard from '../../../components/CatalogCard';
 import SearchBar from '../../../components/SearchBar';
 import * as productService from '../../../services/product-service';
-import './styles.css';
 import { ProductDTO } from '../../../models/product';
 
 type QueryParams = {
@@ -24,8 +24,6 @@ export default function Catalog() {
 
 
   useEffect(() => {
-
-
     productService.findPageRequest(queryParams.page, queryParams.name)
       .then(response => {
         const nextPage = response.data.content;

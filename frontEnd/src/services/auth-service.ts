@@ -4,7 +4,6 @@ import { CLIENT_ID, CLIENT_SECRET } from "../utils/system";
 import { AxiosRequestConfig } from "axios";
 import { requestBackend } from "../utils/request";
 import * as accessTokenRepository from "../localStorage/access-token-repository";
-
 import jwtDecode from "jwt-decode";
 
 export function loginRequest(loginData: CredentialsDTO) {
@@ -61,8 +60,6 @@ export function isAuthenticated(): boolean {
 
     return tokenPayload && tokenPayload.exp * 1000 > Date.now() ? true : false;
 }
-
-
 
 export function hasAnyRoles(roles: RoleEnum[]): boolean {
 

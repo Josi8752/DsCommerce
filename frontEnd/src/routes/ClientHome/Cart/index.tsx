@@ -3,8 +3,8 @@ import './styles.css';
 import { useContext, useState } from 'react';
 import * as cartService from '../../../services/cart-service';
 import * as orderService from '../../../services/order-service';
-import { OrderDTO} from '../../../models/order';
-import { Link, useNavigate} from 'react-router-dom';
+import { OrderDTO } from '../../../models/order';
+import { Link, useNavigate } from 'react-router-dom';
 import { ContextCartCount } from '../../../utils/context-cart';
 
 
@@ -33,23 +33,22 @@ export default function Cart() {
 
     }
 
-      function updateCart() {
+    function updateCart() {
         const newCart = cartService.getCart();
         setCart(newCart);
         setContextCartCount(newCart.items.length);
     }
 
-function handlePlaceOrderClick(event: any){
-  orderService.placeOrderRequest(cart)
-  .then ( response => {
-    cartService.clearCart();
-    setContextCartCount(0);
-    navigate(`/confirmation/${response.data.id}`);
-  })
-  
-          
-}
+    function handlePlaceOrderClick(event: any) {
+        orderService.placeOrderRequest(cart)
+            .then(response => {
+                cartService.clearCart();
+                setContextCartCount(0);
+                navigate(`/confirmation/${response.data.id}`);
+            })
 
+
+    }
 
     return (
         <main>
@@ -94,7 +93,7 @@ function handlePlaceOrderClick(event: any){
                         )
                 }
                 <div className="dsc-btn-page-container">
-                
+
                     <div onClick={handlePlaceOrderClick} className="dsc-btn dsc-btn-blue">
                         Finalizar pedido
                     </div>

@@ -1,8 +1,6 @@
 
 export default function FormTextArea(props: any) {
 
-
-
     const { validation,
         invalid = "false",
         dirty = "false",

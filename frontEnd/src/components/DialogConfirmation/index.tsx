@@ -7,7 +7,7 @@ type Props = {
     onDialogAnswer: Function;
 }
 
-export default function DialogConfirmation({id, message, onDialogAnswer }: Props) {
+export default function DialogConfirmation({ id, message, onDialogAnswer }: Props) {
 
     return (
         <div className="dsc-dialog-background" onClick={() => onDialogAnswer(false, id)}>

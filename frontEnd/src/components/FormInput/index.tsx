@@ -2,8 +2,6 @@
 
 export default function FormInput(props: any) {
 
-
-
     const { validation,
         invalid = "false",
         dirty = "false",

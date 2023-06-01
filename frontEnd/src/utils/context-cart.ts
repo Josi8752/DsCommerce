@@ -1,7 +1,5 @@
 import { createContext } from "react";
 
-
-
 export type ContextCartCountType = {
     contextCartCount: number;
     setContextCartCount: (contextCartCount: number) => void;

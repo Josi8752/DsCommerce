@@ -34,8 +34,6 @@ export default function Login() {
         }
     });
 
-
-
     function handleFormSubmit(event: any) {
 
         event.preventDefault();

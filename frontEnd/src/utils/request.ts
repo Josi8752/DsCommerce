@@ -16,7 +16,6 @@ export function requestBackend(config: AxiosRequestConfig) {
 
 }
 
-
 // REQUEST INTERCEPTOR
 
 axios.interceptors.request.use(
@@ -31,7 +30,6 @@ axios.interceptors.request.use(
         return Promise.reject(error);
     }
 );
-
 
 // RESPONSE INTERCEPTOR
 

@@ -11,7 +11,6 @@ export function findByIdRequest(id: number) {
     return requestBackend(config);
 }
 
-
 export function placeOrderRequest(cart: OrderDTO) {
 
     const config: AxiosRequestConfig = {
@@ -23,6 +22,4 @@ export function placeOrderRequest(cart: OrderDTO) {
 
     }
     return requestBackend(config);
-
-
 }

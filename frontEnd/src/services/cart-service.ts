@@ -22,11 +22,9 @@ export function addProduct(product: ProductDTO) {
 
 }
 
-
 export function clearCart() {
     cartRepository.clear();
 }
-
 
 export function icreaseItem(productId: number) {
     const cart = cartRepository.get();
@@ -37,7 +35,6 @@ export function icreaseItem(productId: number) {
         cartRepository.save(cart);
     }
 }
-
 
 export function decreaseItem(productId: number) {
     const cart = cartRepository.get();

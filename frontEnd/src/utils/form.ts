@@ -23,7 +23,6 @@ export function updateAll(inputs: any, newValue: any) {
     return newInputs;
 }
 
-
 export function validate(inputs: any, name: string) {
 
     if (!inputs[name].validation) {
@@ -34,13 +33,10 @@ export function validate(inputs: any, name: string) {
     return { ...inputs, [name]: { ...inputs[name], invalid: isInvalid.toString() } }
 }
 
-
-
 export function toDirty(inputs: any, name: string) {
 
     return { ...inputs, [name]: { ...inputs[name], dirty: "true" } }
 }
-
 
 export function updateAndValidate(inputs: any, name: string, newValue: any) {
     const dataUpdated = update(inputs, name, newValue);

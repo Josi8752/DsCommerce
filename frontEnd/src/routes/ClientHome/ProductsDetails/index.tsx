@@ -17,7 +17,7 @@ export default function ProductsDetails() {
 
   const [product, setProduct] = useState<ProductDTO>();
 
-  const {setContextCartCount} = useContext(ContextCartCount);
+  const { setContextCartCount } = useContext(ContextCartCount);
 
   useEffect(() => {
     productService.findById(Number(params.productId))
@@ -58,7 +58,5 @@ export default function ProductsDetails() {
         </div>
       </section>
     </main>
-
-
   );
 }
