@@ -89,3 +89,14 @@ export function hasAnyInvalid(inputs: any) {
     return false;
 
 }
+
+export function setBackEndErros(inpust: any, erros: any[]) {
+    const newInputs = { ...inpust };
+    erros.forEach(item => {
+        newInputs[item.fieldName].message = item.message;
+        newInputs[item.fieldName].dirty = "true";
+        newInputs[item.fieldName].invalid = "true";
+
+    });
+    return newInputs;
+}
