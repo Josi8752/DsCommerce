@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import FormInput from '../../../components/FormInput';
 import * as forms from '../../../utils/form';
 import * as productService from '../../../services/product-service';
+import FormTextArea from '../../../components/FormTextArea';
 
 export default function ProductForm() {
 
@@ -30,7 +31,7 @@ export default function ProductForm() {
             type: "number",
             placeholder: "Preço",
             validation: function (value: number) {
-                return value > 0;
+                return Number(value) > 0;
             },
             message: "Informe um preço positivo",
         },
@@ -40,7 +41,18 @@ export default function ProductForm() {
             name: "  imgUrl",
             type: "text",
             placeholder: "Imagem",
-        }
+        },
+        description: {
+            value: "",
+            id: "description",
+            name: "description",
+            type: "text",
+            placeholder: "Descrição",
+            validation: function (value: string) {
+                return /^.{10,}$/.test(value);
+            },
+            message: " A descrição deve ter pelo menos 10 caracteres"
+        },
     });
 
     useEffect(() => {
@@ -104,7 +116,14 @@ export default function ProductForm() {
                                     onChange={handleInputChange}
                                 />
                             </div>
-
+                            <div>
+                                <FormTextArea className="dsc-form-control dsc-textarea"
+                                    {...formData.description}
+                                    onTurnDirty={handleTurnDirty}
+                                    onChange={handleInputChange}
+                                />
+                                <div className='dsc-form-error'>{formData.description.message}</div>
+                            </div>
                         </div>
 
                         <div className="dsc-product-form-buttons">
