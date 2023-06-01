@@ -4,13 +4,17 @@ import { useNavigate, useParams } from 'react-router-dom';
 import FormInput from '../../../components/FormInput';
 import * as forms from '../../../utils/form';
 import * as productService from '../../../services/product-service';
+import * as categoriesService from '../../../services/category-service';
 import FormTextArea from '../../../components/FormTextArea';
+import { CategoriesDTO } from '../../../models/categories';
+import FormSelect from '../../../components/FormSelect';
 
 export default function ProductForm() {
 
     const params = useParams();
     const isEditing = params.productId !== 'create';
     const navigate = useNavigate();
+    const [categories, setCategories] = useState<CategoriesDTO[]>([]);
     const [formData, setFormData] = useState<any>({
 
         name: {
@@ -53,6 +57,16 @@ export default function ProductForm() {
             },
             message: " A descrição deve ter pelo menos 10 caracteres"
         },
+        categories: {
+            value: [],
+            name: "categories",
+            placeholder: "Categorias",
+            validation: function (value: CategoriesDTO[]) {
+                return value.length > 0
+            },
+            message: " A descrição deve ter pelo menos 1 elemento"
+
+        }
     });
 
     useEffect(() => {
@@ -65,6 +79,13 @@ export default function ProductForm() {
                     setFormData(newFormData);
                 })
         }
+    }, [])
+
+    useEffect(() => {
+        categoriesService.findAllRequest()
+            .then(response => {
+                setCategories(response.data);
+            })
     }, [])
 
 
@@ -83,6 +104,7 @@ export default function ProductForm() {
         const newFormData = forms.dirtyAndValidate(formData, name);
         setFormData(newFormData);
     }
+
 
     return (
         <main>
@@ -115,6 +137,22 @@ export default function ProductForm() {
                                     onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />
+                            </div>
+                            <div>
+                                <FormSelect className="dsc-form-control"
+                                    {...formData.categories}
+                                    options={categories}
+                                    onChange={(obj: any) => {
+                                        const newFormData = forms.updateAndValidate(formData, "categories", obj);
+                                        setFormData(newFormData);
+                                    }}
+                                    onTurnDirty={handleTurnDirty}
+                                    isMulti
+                                    getOptionLabel={(obj: any) => obj.name}
+                                    getOptionValue={(obj: any) => String(obj.id)}
+
+                                />
+                                <div className='dsc-form-error'>{formData.categories.message}</div>
                             </div>
                             <div>
                                 <FormTextArea className="dsc-form-control dsc-textarea"
