@@ -8,6 +8,7 @@ import * as categoriesService from '../../../services/category-service';
 import FormTextArea from '../../../components/FormTextArea';
 import { CategoriesDTO } from '../../../models/categories';
 import FormSelect from '../../../components/FormSelect';
+import { selectStyles } from '../../../utils/select';
 
 export default function ProductForm() {
 
@@ -139,7 +140,8 @@ export default function ProductForm() {
                                 />
                             </div>
                             <div>
-                                <FormSelect className="dsc-form-control"
+                                <FormSelect className="dsc-form-control dsc-form-select-container"
+                                    styles={selectStyles}
                                     {...formData.categories}
                                     options={categories}
                                     onChange={(obj: any) => {
