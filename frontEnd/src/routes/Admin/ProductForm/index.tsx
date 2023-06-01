@@ -43,7 +43,7 @@ export default function ProductForm() {
         imgUrl: {
             value: "",
             id: "imgUrl",
-            name: "  imgUrl",
+            name: "imgUrl",
             type: "text",
             placeholder: "Imagem",
         },
@@ -118,10 +118,15 @@ export default function ProductForm() {
         if (isEditing) {
             requestBody.id = params.productId;
         }
-        productService.updateRequest(requestBody)
+        const request = isEditing
+            ? productService.updateRequest(requestBody)
+            : productService.insertRequest(requestBody);
+
+        request
+
             .then(() => {
-                navigate("/admin/products")
-            })
+                navigate("/admin/products");
+            });
     }
     return (
         <main>
