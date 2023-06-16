@@ -17,13 +17,13 @@ Experimente live demo:
 
 <h2>Como criar e executar o DSCommerce localmente</h2>
 
-Criar e executar o projeto em seu ambiente de desenvolvimento local é muito fácil. Certifique-se de ter o Git e JDK17 instalados e siga as instruções abaixo. Precisa de informações adicionais? entre em contato no e-mail josecarloscjj@gmail.com 
+Criar e executar o projeto em seu ambiente de desenvolvimento local é muito fácil. Certifique-se de ter o Git e JDK17 instalados e siga as instruções abaixo. 
 (Estas instruções pressupõem que você esteja instalando como um usuário root.)
 
 - Clone o código fonte
 
    ```bash
-     git clone git@github.com:joosecj/DSCommerce.git
+     git@github.com:Josi8752/dscommerce.git
    ```
 
 - Em sua IDE de preferência(utilizei Intellij), importe a pasta **backend** e faça o update das dependências do **maven**.
