@@ -9,7 +9,7 @@ import BtnNextPage from '../../../components/BtnNextPage';
 import DialogInfo from '../../../components/DialogInfo';
 import DialogConfirmation from '../../../components/DialogConfirmation';
 import ButtonInverse from '../../../components/ButtonInverse';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 type QueryParams = {
@@ -75,7 +75,7 @@ export default function ProductListing() {
 
         if (answer) {
             productService.deleteById(productId)
-                .then(response => {
+                .then(() => {
                     setProducts([]);
                     setQueryParams({ ...queryParams, page: 0 })
                 })

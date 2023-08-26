@@ -8,7 +8,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ContextCartCount } from '../../../utils/context-cart';
 
 
-const cart: OrderDTO = new OrderDTO();
 
 export default function Cart() {
 
@@ -39,7 +38,7 @@ export default function Cart() {
         setContextCartCount(newCart.items.length);
     }
 
-    function handlePlaceOrderClick(event: any) {
+    function handlePlaceOrderClick() {
         orderService.placeOrderRequest(cart)
             .then(response => {
                 cartService.clearCart();
